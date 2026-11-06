@@ -1,0 +1,239 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "23cbc6653746819b5146b1ee8e857ad8",
+    "entities": [
+      {
+        "tableName": "history_entries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recordKey` TEXT NOT NULL, `hostId` TEXT NOT NULL, `sessionId` TEXT NOT NULL, `entryId` TEXT NOT NULL, `contentType` TEXT NOT NULL, `position` INTEGER NOT NULL, `content` TEXT NOT NULL, `receivedSeconds` INTEGER NOT NULL, `receivedNanos` INTEGER NOT NULL, `serverAt` TEXT, PRIMARY KEY(`recordKey`, `entryId`, `contentType`))",
+        "fields": [
+          {
+            "fieldPath": "recordKey",
+            "columnName": "recordKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hostId",
+            "columnName": "hostId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entryId",
+            "columnName": "entryId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contentType",
+            "columnName": "contentType",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "position",
+            "columnName": "position",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "content",
+            "columnName": "content",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "receivedSeconds",
+            "columnName": "receivedSeconds",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "receivedNanos",
+            "columnName": "receivedNanos",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "serverAt",
+            "columnName": "serverAt",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "recordKey",
+            "entryId",
+            "contentType"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_history_entries_hostId_sessionId",
+            "unique": false,
+            "columnNames": [
+              "hostId",
+              "sessionId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_history_entries_hostId_sessionId` ON `${TABLE_NAME}` (`hostId`, `sessionId`)"
+          }
+        ]
+      },
+      {
+        "tableName": "history_cursors",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recordKey` TEXT NOT NULL, `hostId` TEXT NOT NULL, `sessionId` TEXT NOT NULL, `value` TEXT NOT NULL, `receivedSeconds` INTEGER NOT NULL, `receivedNanos` INTEGER NOT NULL, PRIMARY KEY(`recordKey`))",
+        "fields": [
+          {
+            "fieldPath": "recordKey",
+            "columnName": "recordKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hostId",
+            "columnName": "hostId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "value",
+            "columnName": "value",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "receivedSeconds",
+            "columnName": "receivedSeconds",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "receivedNanos",
+            "columnName": "receivedNanos",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "recordKey"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_history_cursors_hostId_sessionId",
+            "unique": false,
+            "columnNames": [
+              "hostId",
+              "sessionId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_history_cursors_hostId_sessionId` ON `${TABLE_NAME}` (`hostId`, `sessionId`)"
+          }
+        ]
+      },
+      {
+        "tableName": "mail_drafts",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`hostId` TEXT NOT NULL, `sessionId` TEXT NOT NULL, `recipient` TEXT NOT NULL, `threadKey` TEXT NOT NULL, `text` TEXT NOT NULL, PRIMARY KEY(`hostId`, `sessionId`, `recipient`, `threadKey`))",
+        "fields": [
+          {
+            "fieldPath": "hostId",
+            "columnName": "hostId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "recipient",
+            "columnName": "recipient",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "threadKey",
+            "columnName": "threadKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "text",
+            "columnName": "text",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "hostId",
+            "sessionId",
+            "recipient",
+            "threadKey"
+          ]
+        }
+      },
+      {
+        "tableName": "sync_checkpoints",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`hostId` TEXT NOT NULL, `content` TEXT NOT NULL, `receivedSeconds` INTEGER NOT NULL, `receivedNanos` INTEGER NOT NULL, PRIMARY KEY(`hostId`))",
+        "fields": [
+          {
+            "fieldPath": "hostId",
+            "columnName": "hostId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "content",
+            "columnName": "content",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "receivedSeconds",
+            "columnName": "receivedSeconds",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "receivedNanos",
+            "columnName": "receivedNanos",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "hostId"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '23cbc6653746819b5146b1ee8e857ad8')"
+    ]
+  }
+}

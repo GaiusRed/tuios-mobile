@@ -1,0 +1,1 @@
+{"id":1,"result":{"type":"agent_transcript","session":"demo","window":"p1","harness":"future","cursor":"opaque","reset":false,"more":false,"older":"","entries":[{"id":"x1","role":"future","kind":"future_tool","text":"<script>not executable</script>","new_payload":{"x":3}}],"untrusted":true,"future_field":123}}

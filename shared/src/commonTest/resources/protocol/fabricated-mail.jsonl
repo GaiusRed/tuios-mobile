@@ -1,0 +1,1 @@
+{"id":2,"result":{"type":"agent_messages","session":"demo","inbox":"","messages":[{"id":18446744073709551615,"kind":"message","session":"demo","from":"human","to":"p1","text":"Fabricated message","thread_id":18446744073709551615,"sent_at":1700000000000000000,"verified_human":true}],"untrusted":true,"total":1,"evicted":0}}
